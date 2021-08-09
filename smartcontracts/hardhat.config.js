@@ -21,7 +21,7 @@ module.exports = {
     version: "0.8.4" 
   },
   paths: {
-    artifacts: "../web-client/src/contract-artifacts/"
+    artifacts: "../web-client/src/contract-artifacts/contracts"
   },
   networks: {
     hardhat: {
