@@ -4,7 +4,8 @@ import MainContainer from '../containers/main';
 import NavigationContainer from '../containers/navigation';
 import FooterContainer from '../containers/footer';
 
-
+import { ethers } from 'ethers'
+import Greeter from '../contract-artifacts/contracts/Greeter.sol/Greeter.json'
 
 export default function Home(){
     
@@ -15,7 +16,9 @@ export default function Home(){
                 <NavigationContainer />
             </HeaderContainer>
                 <MainContainer>
-                    <p>test</p>
+                    <div>
+                        <p>String: </p>
+                    </div>
                 </MainContainer>
             <FooterContainer>
                 <NavigationContainer/>
