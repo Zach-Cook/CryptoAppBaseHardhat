@@ -5,18 +5,22 @@ import "hardhat/console.sol";
 
 
 contract Greeter {
-  string greeting;
-  string testVar;
-  string test;
-  string test2;
+  string public greeting;
+
+  int public num;
 
   constructor(string memory _greeting) {
     console.log("Deploying a Greeter with greeting:", _greeting);
     greeting = _greeting;
+    num = 3;
   }
 
   function greet() public view returns (string memory) {
     return greeting;
+  }
+
+  function returnNum() public view returns (int){
+    return num;
   }
 
   function setGreeting(string memory _greeting) public {
