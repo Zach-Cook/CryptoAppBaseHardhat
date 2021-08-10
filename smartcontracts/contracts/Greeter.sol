@@ -22,4 +22,11 @@ contract Greeter {
     console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
     greeting = _greeting;
   }
+
+  function delGreeting() public {
+    console.log("deleting the greeting");
+    greeting = "";
+  }
+
+
 }
