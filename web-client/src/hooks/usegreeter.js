@@ -16,15 +16,15 @@ export default function useGreeter(){
     }
 
     async function setNewGreeting(){
-        if (!greeting) return
+        if (!greeting.newGreeting) return
         if (typeof window.ethereum !== "undefined"){
             await requestAccount()
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner();
             const signerContract = new ethers.Contract(process.env.REACT_APP_LOCAL_CONTRACT_ADDRESS, Greeter.abi, signer)
-            console.log(signerContract.address)
             const transaction = await signerContract.setGreeting(greeting.newGreeting)
             await transaction.wait()
+            fetchGreeting()
         }
     }
     
@@ -41,6 +41,12 @@ export default function useGreeter(){
         
     }
 
+    useEffect(()=>{
 
-    return { greeting, setGreeting, setNewGreeting, fetchGreeting }
+        fetchGreeting()
+
+    },[])
+
+
+    return { greeting, setGreeting, setNewGreeting }
 }

@@ -8,7 +8,7 @@ import useGreeter from '../hooks/usegreeter';
 
 export default function Home(){
     
-    const { greeting, setGreeting, setNewGreeting, fetchGreeting } = useGreeter();
+    const { greeting, setGreeting, setNewGreeting } = useGreeter();
 
     
 
@@ -21,9 +21,8 @@ export default function Home(){
                     <div>
                         <p>Greeting: {greeting.currentGreeting ? greeting.currentGreeting : null}</p>
                     </div>
-                    <button onClick={fetchGreeting}>Fetch</button>
                     <input onChange={(e)=>setGreeting({...greeting, newGreeting: e.target.value})}></input>
-                    <button onClick={setNewGreeting}>Button</button>
+                    <button onClick={setNewGreeting}>Set New Greeting</button>
                 </MainContainer>
             <FooterContainer>
                 <NavigationContainer/>
