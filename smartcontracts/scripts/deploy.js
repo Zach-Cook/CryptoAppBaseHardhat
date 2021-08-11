@@ -1,11 +1,25 @@
 
 const hre = require("hardhat");
+const fs = require("fs");
 
 async function main() {
 
   const Greeter = await hre.ethers.getContractFactory("Greeter");
   const greeter = await Greeter.deploy("Hello, Hardhat!");
   await greeter.deployed();
+
+  let json={
+    local: greeter.address
+  }
+  json = JSON.stringify(json)
+  fs.writeFile('../../web-client/src/contract-artifacts/contracts/Greeter.sol/greeteraddress.json', json, (err)=>{
+    if (!err) {
+      console.log("address file created")
+    } else {
+      console.log(err)
+      console.log('error file not created')
+    }
+  })
 
   console.log("Greeter deployed to:", greeter.address);
 }
